@@ -1,0 +1,63 @@
+SEQUELIZE
+	-> Criar a configuracao (.sequelizerc)
+		const { resolve } = require('path');
+
+module.exports = {
+   config: resolve(__dirname, 'src', 'config', 'database'),
+   'models-path': resolve(__dirname, 'src', 'app', 'models'),
+   'migrations-path': resolve(__dirname, 'src', 'database', 'migrations'),
+   'seeders-path': resolve(__dirname, 'src', 'database', 'seeds'),
+}
+
+  ( ORM )
+  	Abstracao do Banco de Dados
+  	Tabelas viram models
+
+  ( MANIPULACAO DE DADOS )
+  	Sem7 SQL
+  	Apenas codigo Javascript
+
+  ( MIGRATIONS )
+  	Controle de versao para base de dados
+  	Cada arquivo contém instrucoes para criacao,
+  		alteracao ou remocao de tabelas/colunas
+  	Mantem a base de dados atualizada entre 
+  		todos os desenvolvedores do time e tambem
+  		no ambiente de produçao
+  	Cada arquivo é uma migration e sua ordenaçao
+  		ocorre por data
+  	Utilizada para varios bancos de dados SQL
+  	Apos uma migration passar para producao ou 
+  		compartilhada com outros desenvolvedores,
+  		ela nao pode ser editada. Caso seja 
+  		nescessario, tem que ser criada uma nova
+  		migration com essa alteracao
+  	Cada MIGRATION edita/altera cria uma unica 
+  		tabela
+
+  ( SEEDS )
+  	Sao informacoes que populam para desenvolvim-
+  		mento
+ MVC
+  ( MODEL )
+  	Armazena a abstracao do banco, utilizado para
+  		manipular esses dados contidos
+
+  ( CONTROLLER )
+  	Contem a regra do negocio. Ponto de entrada
+  		das requisicoes da nossa aplicacao
+  	É uma classe, retornando JSON, nao chama outro
+  		controller
+  	Apenas 5 metodos:
+  		Index, Listagem
+  	    Show, Exibir um unico
+  	    Store, Cadastrar 
+  	    Update, Alterar 
+  	    Delete, Remover
+  	Cria-se quando tem uma entidade
+  ( VIEW )
+  	É o retorno ao cliente, em aplicacoes que
+  		utilizem o modelo de API REST ou HTML.
+
+JWT
+	Autenticacao de aplicacoes RESTFUL(REST/API)
